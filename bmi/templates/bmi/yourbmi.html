@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 style="padding: 5% 0% 5%; text-align: center">Result!</h1>
+
+<div class="result-box"">
+    <label for="">Your BMI :</label>
+    <div class="alert alert-success" >
+    {{result}}
+    </div>
+    <label for="">Weight Class :</label>
+    {% if result < 18.5 %}
+    <div class ="alert alert-warning">
+    Underweight
+    </div>
+
+    {% elif result < 24.9 %}
+    <div class ="alert alert-success">
+    Normal
+    </div>
+
+    {% elif result < 29.9 %}
+    <div class ="alert alert-warning">
+    Overweight
+    </div>
+
+    {% elif result < 34.9 %}
+    <div class ="alert alert-danger">
+    Obese
+    </div>
+
+    {% elif result > 35 %}
+    <div class ="alert alert-danger">
+    Extremely Obese
+    </div>
+    {% endif %}
+    <button type = "button" class="btn" onclick="window.location.href='http://127.0.0.1:8000/bmi/bmi/';">Reset</button>
+</div>
+
+<style>
+    .btn {
+        background: #c5ecfd;
+        width: 93.5%;
+        border: none;
+        border-radius: 15px;
+        padding: 20px;
+        color: black;
+        cursor: pointer;
+        text-align: center;
+        margin: 10px;
+        transition-duration: 0.3s;
+        font-weight: 600;
+    }
+
+    .btn:hover {
+        background: #000000;
+        color: #c5ecfd;
+    }
+
+    .result-box {
+        display: block;
+        width: 35%;
+        height: auto;
+        margin: auto;
+        border-radius: 10px;
+        background: rgba(0,0,0,0.8);
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        padding: 3%;
+        color: #BFFF00;
+    }
+</style
+{% endblock %}

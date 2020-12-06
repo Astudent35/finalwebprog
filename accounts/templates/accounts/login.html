@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Login Page</title>
+    <meta charset = "UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+<body>
+<img src="{% static 'beyondwellness_logo.png'%}"alt="Logo">
+<div class = "login-div">
+    <form method="POST" action="{% url 'login' %}" class="placeholder">
+        {% csrf_token %}
+        <div class = "accInput">
+            <input id="name" type="text" name="username" placeholder="User name">
+        </div>
+
+        <div class = "accInput">
+            <input id="password" type="password" name="password" placeholder="Password">
+        </div>
+        <button value="Login">Login</button>
+    </form>
+</div>
+</body>
+</html>

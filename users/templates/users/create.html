@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+{{ error }}
+<br />
+<br />
+{% endif %}
+
+<h1 style="text-align: center;padding-top: 5%"">Create your diet plan!</h1>
+<div style="padding-right: 35%;padding-left: 35%;padding-top: 6%;padding-bottom: 115px;">
+    <form method="POST" action="{% url 'create' %}" class="form-group">
+{% csrf_token %}
+    <label for="">Title:</label>
+
+    <input type="textbox" name="title" class="form-control"/>
+
+    <label for="">Description:</label>
+        <textarea name="body" class="form-control" rows="4" cols="50"></textarea>
+    <br>
+    <button class="btn btn-success" type="submit">Add Your Plan!</button>
+</form>
+</div>
+
+
+{% endblock %}

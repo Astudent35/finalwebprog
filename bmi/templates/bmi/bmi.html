@@ -1,0 +1,102 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+
+    function parameterCheck(){
+        var massLen = document.getElementById('mass').value.length;
+        var heightLen = document.getElementById('height').value.length;
+        var parsedMass = parseInt(document.getElementById('mass').value);
+        var parsedHeight = parseInt(document.getElementById('height').value);
+        if(parsedMass.toString().length == massLen && parsedHeight.toString().length == heightLen){
+            btnSubmit.disabled = false
+        }
+        else{
+            window.alert("Please Input A Valid Value")
+            btnSubmit.disabled = true
+        }
+    }
+
+</script>
+<div class="foreground">
+    <h1 style="padding: 5% 0% 5%; text-align: center">Calculate your BMI!</h1>
+    <div>
+        <form action="{% url 'yourbmi' %}" class="form-group">
+            <div class="text-area">
+                <label> Pick a Unit For Your Mass </label>
+                <select class="input" name="wUnit" style="margin-left: 40px">
+                    <option value="Kg">Kg</option>
+                    <option value="lb">lb</option>
+                </select>
+                <input type="text" id="mass" name="mass" class="form-control" placeholder="Input Your Mass" style="margin-bottom: 5%">
+
+                <label> Pick a Unit For Your Height </label>
+                <select class="input"  name="hUnit" style="margin-left: 28.5px; ">
+                    <option value="cm" class="option" >cm</option>
+                    <option value="in" class="option">in</option>
+                </select>
+                <input type="text" id="height" name="height" class="form-control" placeholder="Input Your Height">
+                <br>
+                <button type="button" value="validityCheck" class="btn" onclick="parameterCheck()">Validity Check</button>
+                <button type="submit" id="btnSubmit" value="Calculate" class="btn" disabled="disabled">Calculate</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+<style>
+    .btn {
+        background: #c5ecfd;
+        width: 93.5%;
+        border: none;
+        border-radius: 15px;
+        padding: 20px;
+        color: black;
+        cursor: pointer;
+        text-align: center;
+        margin: 10px;
+        transition-duration: 0.3s;
+        font-weight: 600;
+    }
+
+    .btn:hover {
+        background: #000000;
+        color: #c5ecfd;
+    }
+
+    .btn:disabled {
+        background: red;
+        color: black;
+        transition-duration: 0.4s;
+        pointer-events: none;
+    }
+
+
+    .form-group {
+        display: block;
+        width: 55%;
+        height: auto;
+        margin: auto;
+        border-radius: 10px;
+        background: rgba(0,0,0,0.8);
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        padding: 3%;
+        color: #BFFF00;
+    }
+
+    .form-control {
+        background-color: whitesmoke;
+    }
+
+    .input{
+        margin: auto;
+        width: 50px;
+        position: relative;
+        background-color: whitesmoke;
+    }
+</style>
+
+{% endblock %}
